@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import * as firebase from 'firebase'
+import firebase from 'firebase/app'
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -48,7 +48,7 @@ constructor(props){
 }
 
 componentDidMount(){
-  firebase.default.auth().onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {
     if(!user){
       this.setState({
         loggedIn: false,
