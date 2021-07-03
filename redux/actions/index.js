@@ -1,4 +1,4 @@
-import { USER_STATE_CHANGE, USER_POSTS_STATE_CHANGE, USER_FOLLOWING_STATE_CHANGE, USERS_DATA_STATE_CHANGE, USERS_POSTS_STATE_CHANGE, CLEAR_DATA } from '../constants/index'
+import { USER_STATE_CHANGE, USER_POSTS_STATE_CHANGE, USER_FOLLOWING_STATE_CHANGE, USERS_DATA_STATE_CHANGE, USERS_POSTS_STATE_CHANGE, USERS_LIKES_STATE_CHANGE, CLEAR_DATA } from '../constants/index'
 import firebase from 'firebase'
 
 export function clearData() {
@@ -112,9 +112,37 @@ export function fetchUsersFollowingPosts(uid){
                 const id = doc.id;
                 return{id, ...data, user}
             })
-            console.log(posts)
+            //console.log(posts)
+            for( let i = 0; i < posts.length; i++){
+                dispatch(fetchUsersFollowingLikes(uid, posts[i].id))
+            }
+
             dispatch({type: USERS_POSTS_STATE_CHANGE, posts, uid})
-            console.log(getState())
+            //console.log(getState())
+        })
+    })
+}
+
+export function fetchUsersFollowingLikes(uid, postId){
+    return((dispatch, getState) => {
+        firebase.firestore()
+        .collection("posts")
+        .doc(uid)
+        .collection("userPosts")
+        .doc(postId)
+        .collection("likes")
+        .doc(firebase.auth().currentUser.uid)
+        .onSnapshot((snapshot) => {
+            //console.log(snapshot)
+            const postId = snapshot._.S_.path.segments[3];
+
+            let currentUserLike = false;
+            
+            if(snapshot.exists){
+                currentUserLike = true;
+            }
+            
+            dispatch({type: USERS_LIKES_STATE_CHANGE, postId, currentUserLike})
         })
     })
 }

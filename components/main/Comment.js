@@ -28,7 +28,7 @@ function Comment(props) {
                     comments[i].user = user
                 }
             }
-            setComments(comments);// không thể set comment ?
+            setComments(comments);
         }
 
         if(props.route.params.postId !== postId){
