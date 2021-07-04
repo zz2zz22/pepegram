@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 import firebase from 'firebase/app'
 
@@ -87,8 +87,16 @@ render() {
   return(
     <Provider store= {store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Landing">
-         <Stack.Screen name="Main" component={MainScreen}/>
+        <View style={styles.bgHeader}>
+          <Image 
+          style={styles.tinyLogo}
+          source={{
+            uri: 'https://firebasestorage.googleapis.com/v0/b/pepegram-5488f.appspot.com/o/icon%2F5845ca7c1046ab543d25238b.png?alt=media&token=94b53295-7a8f-47b1-8285-92740303e339'
+            }}/>
+          <Text style={styles.titleStyle}>PepeGram</Text>
+        </View>
+        <Stack.Navigator initialRouteName="Landing" >
+         <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Add" component={AddScreen} navigation={this.props.navigation}/>
          <Stack.Screen name="Save" component={SaveScreen} navigation={this.props.navigation}/>
          <Stack.Screen name="Comment" component={CommentScreen} navigation={this.props.navigation}/>
@@ -98,5 +106,29 @@ render() {
   )
 }
 }
+
+const styles = StyleSheet.create({
+  bgHeader:{
+    marginTop: 25,
+    backgroundColor: '#33CC33',
+    justifyContent:'flex-start',
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  titleStyle:{
+    fontSize: 25,
+    textAlign: 'center',
+    fontFamily: 'Lobster',
+    margin: 10,
+    //fontWeight: 'bold',
+    color: '#000',
+  },
+  tinyLogo: {
+    width: 35,
+    height: 35,
+    marginLeft: 15,
+  }
+})
 
 export default App
