@@ -29,7 +29,8 @@
     "react-native-web": "~0.13.12",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typeface-lobster": "^1.1.13"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
