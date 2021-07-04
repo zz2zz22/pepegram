@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, FlatList, TouchableOpacity, Image } from 'react-native'
 
 import firebase from 'firebase'
 require('firebase/firestore')
@@ -30,7 +30,12 @@ export default function Search(props) {
                 data={users}
                 renderItem={({item}) => (
                     <TouchableOpacity
+                        style={{display: 'flex', flexDirection: 'row'}}
                         onPress={() => props.navigation.navigate("Profile", {uid: item.id})}>
+                        <Image
+                            style={{width: 30, height:30, borderRadius: 50, marginLeft: 8}}
+                            source={{uri: item.profilePic}}
+                        />
                         <Text>{item.name}</Text>
                     </TouchableOpacity>
                 )}
