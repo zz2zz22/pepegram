@@ -119,9 +119,9 @@ const styles = StyleSheet.create({
   titleStyle:{
     fontSize: 25,
     textAlign: 'center',
-    fontFamily: 'Lobster',
+    fontFamily: 'Roboto',
     margin: 10,
-    //fontWeight: 'bold',
+    fontWeight: 'bold',
     color: '#000',
   },
   tinyLogo: {

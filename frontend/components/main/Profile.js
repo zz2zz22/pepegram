@@ -82,8 +82,13 @@ function Profile(props) {
     return (
         <View style={styles.container}>
             <View style={styles.containerInfo}>
+                <Image
+                    style={{width: 80, height: 80, borderRadius: 50}}
+                    source={{uri: user.profilePic}}
+                />
                 <Text>{user.name}</Text>
                 <Text>{user.email}</Text>
+                
 
                 {props.route.params.uid !== firebase.auth().currentUser.uid ? (
                     <View>
