@@ -24,7 +24,8 @@ export class Register extends Component {
             .doc(firebase.auth().currentUser.uid)
             .set({
                 name,
-                email
+                email,
+                profilePic: 'https://firebasestorage.googleapis.com/v0/b/pepegram-5488f.appspot.com/o/default%2Fdefault_Pic.png?alt=media&token=7d5b1001-cc21-44c0-80d8-08f0e15d9ead'
             })
             console.log(result)
         })
