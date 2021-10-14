@@ -36,6 +36,7 @@
 
 ## Author:
 - Nguyen Hoang Trieu - 17521160
-- Nguyen Dong Anh - 17520239
+- Le Anh Vu - 17521269
+- Nguyen Phuong Tran - (Thuy Loi University)
 
 ## Licences:
